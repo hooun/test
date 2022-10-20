@@ -4,13 +4,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import koreanize_matplotlib
 
-
 # 파일불러오기
 url = "https://raw.githubusercontent.com/moksu27/midproject/main/healthcare-dataset-stroke-data.csv"
 df = pd.read_csv(url)
-
-
-
 
 
 # 크기확인
@@ -30,6 +26,7 @@ df_glucose_level.head()
 df_glucose_level.info()
 # 결측치확인
 df_glucose_level.isnull().sum()
+
 
 b = df["avg_glucose_level"]
 # 혈당수치 등급 분류 
@@ -55,7 +52,6 @@ blood_list
 df_glucose_level["blood_level"] = blood_list
 
 
-
 # 시각화 1
 df_glucose_level.hist(bins=50,figsize=(15,10))
 plt.show()
@@ -69,12 +65,12 @@ df0 = df_glucose_level[(df_glucose_level['stroke']==0)]
 # 시각화 
 sns.histplot(data = df0, x="blood_level")
 
-
-
 # 상관관계
 # blood_level로 그룹화해서 확인 
 df_level_corr=df_glucose_level.groupby("blood_level").corr()
 df_level_corr
+
+
 
 #.전체 상관관계분석 및 시각화 
 corr = df_glucose_level.corr()
